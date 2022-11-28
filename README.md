@@ -29,7 +29,22 @@ We will create a server block file.
 we can VIM a file with the IP address of our droplet.
 
 
-![Server Block](https://user-images.githubusercontent.com/46077062/204197097-5c70246d-634b-463b-a19d-9aa2176ed8b3.PNG)
+We will put the following in our service block:
+```
+server {
+    listen 80;
+    listen [::]:80;
+    
+    root /var/www/164.92.86.62;
+    index index.html;
+    
+    server_name 164.92.86.62;
+    
+    location / {
+            try_files $uri $uri/ =404;
+    }
+ }
+ ```
 
 
 ## Moving Files to Droplet
